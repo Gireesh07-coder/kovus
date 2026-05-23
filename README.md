@@ -52,3 +52,78 @@ Tool Execution
 MongoDB Memory Storage
         ↓
 Dashboard Update
+
+---
+
+## 🏗️ Tech Stack
+
+| Layer | Technology |
+|------|-------------|
+| AI Reasoning Engine | Gemini API |
+| Backend | FastAPI |
+| Frontend | Next.js |
+| Database | MongoDB Atlas |
+| Runtime | Python |
+| Deployment | Google Cloud Run / Vercel |
+
+---
+
+## ✨ Key Features
+
+- Autonomous AI reasoning for cloud operations
+- Blindspot and waste detection
+- Gemini function calling support
+- Persistent operational memory
+- Simulated remediation workflows
+- Real-time operational dashboard
+- AI-generated infrastructure insights
+
+---
+
+## 📂 Project Structure
+
+```text
+kovus/
+│
+├── backend/
+├── frontend/
+├── docs/
+└── README.md
+```
+
+---
+
+## 📌 Project Status
+
+### Current Development Progress
+
+- [x] Repository initialized
+- [x] Project architecture designed
+- [x] README and workflow documentation completed
+- [ ] FastAPI backend implementation
+- [ ] Gemini API integration
+- [ ] Function calling workflow
+- [ ] MongoDB integration
+- [ ] Dashboard implementation
+- [ ] Cloud deployment
+
+Currently building the MVP prototype for autonomous AI cloud operations intelligence.
+
+---
+
+## 🎯 Vision
+
+Kovus is designed to evolve into a fully autonomous AI cloud operations platform capable of:
+- proactive infrastructure optimization
+- operational memory retention
+- autonomous remediation
+- cloud governance intelligence
+- infrastructure observability
+
+---
+
+## 👨‍💻 Developer
+
+Built by Gireesh Bhajantri  
+Computer Science Engineering Student  
+Focused on AI agents, backend systems, cloud intelligence, and autonomous software systems.
