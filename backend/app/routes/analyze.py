@@ -1,8 +1,8 @@
-from app.core.database import incidents_collection
 from fastapi import APIRouter
 from google import genai
 from dotenv import load_dotenv
 from app.models.billing import BillingData
+from app.routes.incidents import fake_incidents
 
 import os
 import json
@@ -54,15 +54,16 @@ def analyze(data: BillingData):
     )
 
     try:
+
         analysis_json = json.loads(cleaned_response)
 
         incident_data = {
             "input_data": data.dict(),
             "analysis": analysis_json,
-            "created_at": datetime.utcnow()
+            "created_at": datetime.utcnow().isoformat()
         }
 
-        incidents_collection.insert_one(incident_data)
+        fake_incidents.append(incident_data)
 
         return {
             "status": "success",

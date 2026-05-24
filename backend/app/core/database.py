@@ -6,7 +6,11 @@ load_dotenv()
 
 MONGODB_URI = os.getenv("MONGODB_URI")
 
-client = MongoClient(MONGODB_URI)
+client = MongoClient(
+    MONGODB_URI,
+    tls=True,
+    tlsAllowInvalidCertificates=True
+)
 
 db = client["kovus_db"]
 
