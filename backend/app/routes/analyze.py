@@ -1,8 +1,12 @@
+from app.core.database import incidents_collection
 from fastapi import APIRouter
 from google import genai
 from dotenv import load_dotenv
+from app.models.billing import BillingData
+
 import os
 import json
+from datetime import datetime
 
 load_dotenv()
 
@@ -12,8 +16,9 @@ client = genai.Client(
     api_key=os.getenv("GEMINI_API_KEY")
 )
 
+
 @router.post("/analyze")
-def analyze(data: dict):
+def analyze(data: BillingData):
 
     prompt = f"""
     Analyze this cloud infrastructure data.
@@ -33,7 +38,7 @@ def analyze(data: dict):
     }}
 
     Infrastructure Data:
-    {data}
+    {data.dict()}
     """
 
     response = client.models.generate_content(
@@ -51,10 +56,18 @@ def analyze(data: dict):
     try:
         analysis_json = json.loads(cleaned_response)
 
+        incident_data = {
+            "input_data": data.dict(),
+            "analysis": analysis_json,
+            "created_at": datetime.utcnow()
+        }
+
+        incidents_collection.insert_one(incident_data)
+
         return {
             "status": "success",
             "analysis": analysis_json,
-            "received_data": data
+            "received_data": data.dict()
         }
 
     except Exception as e:
